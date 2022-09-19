@@ -1,0 +1,26 @@
+#include <Servo.h>
+Servo myservo;
+int LED=6;
+int PIR=2;
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(PIR,INPUT);
+  pinMode(LED,OUTPUT);
+  myservo.attach(9);
+}
+void loop()
+{
+  int VAL = digitalRead(PIR);
+  Serial.println(VAL);
+  if(VAL==HIGH)
+  {
+    digitalWrite(LED,HIGH);
+    myservo.write(70);
+  }
+  else
+  {
+    digitalWrite(LED,LOW);
+    myservo.write(10);
+  }
+}
