@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    body
+    {
+      background-image : url('https://img.freepik.com/premium-vector/lilac-abstract-background_126980-527.jpg?w=996');
+      background-repeat : no-repeat;
+      background-attachment : fixed;
+      background-size : 100% 100%;
+    }
+    </style>
+    <base target = "_top">
+    <script>
+    function AddRow()
+    {
+      var usernamee = document.getElementById("usernamee").value;
+      var passwordd = document.getElementById("passwordd").value;
+      var email = document.getElementById("email").value;
+      var phone = document.getElementById("phone").value;
+      if(usernamee==""||passwordd==""||email==""||phone=="")
+      { 
+        return false;
+      }
+      else
+      {
+        google.script.run.AddRecord(usernamee,passwordd,email,phone);
+        document.getElementById("page2_id1").className="page2_id1-off";
+        document.getElementById("page3_id1").className="page3_id1";
+      }
+    }
+    function LoginUser()
+    {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      google.script.run.withSuccessHandler(function(output)
+      {
+        if(output=='TRUE')
+        {
+          var url1 = 'https://node-red-vygyh-2022-11-04.au-syd.mybluemix.net/ui/#!/0?socketid=kVaDwxl44Sp25mOZAAAX';
+          var winRef = window.open(url1);
+          winRef?google.script.host.close() :window.onload=function()
+          {
+            document.getElementById('url').href=url1;
+          }
+        }
+        else if(output=='FALSE')
+        {
+          document.getElementById("errorMessage").innerHTML="Invaliddata";
+        }
+      }).checkLogin(username,password);
+    }
+    function function1()
+    {
+      document.getElementById("page1_id1").className="page1_class1-off";
+      document.getElementById("page2_id1").className="page2_id1";
+    }
+    function function2()
+    {
+      document.getElementById("page2_id1").className="page2_id1-off";
+      document.getElementById("page3_id1").className="page3_id1";
+    }
+    function function3()
+    {
+      document.getElementById("page3_id1").className="page3_id1-off";
+      document.getElementById("page1_id1").className="page1_id1";
+    }
+    </script>
+    <style>
+    /*page1*/
+    .page1_class1-off
+    {
+      display : none;
+    }
+    /*page2*/
+    .page2_class1
+    {
+      display : none;
+    }
+    .page2_id1-off
+    {
+      display : none;
+    }
+    /*page3*/
+    .page3_class1
+    {
+      display : none;
+    }
+    .page3_id1-off
+    {
+      display : none;
+    }
+    input[type=text] : hover
+    {
+      border-bottom : 2px solidblack;
+    }
+    input[type=number] : hover
+    {
+      border-bottom : 2px solidblack;
+    }
+    input[type=password] : hover
+    {
+      border-bottom : 2px solidblack;
+    }
+    </style>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  </head>
+  <body><center><h1>Signs with smart connectivity for better road safety<h1>
+  </center><br><br>
+    <!--page1-->
+    <center>
+      <div class="page1_class1" id="page1_id1" style="background-image: url('https://media.istockphoto.com/id/1302561463/photo/holographic-iridescent-background-unicorn-colorful-rainbow-foil-abstract-beautiful-rainbow.jpg?b=1&s=170667a&w=0&k=20&c=BXTMLyLQNIqvm2od1KerrL5hPVHbjBf5ehhN5sxlJNE=');border:1px solid gray;border-radius: 20px;width: 250px;padding-top:10px;padding-bottom: 20px;padding-left:20px;padding-right: 20px;">
+        <h1>Login</h1>
+        <input type="text" id="username" placeholder="  Enter the Username" style=";outline: none;border-top: none;border-right: none;border-left: none;font-align:centre;text-transform: none;font:monospace;font-size:1.2em ;border-bottom: .2rem solid rgba(222, 214, 223, 0.3);margin:1rem 0;height:2rem;font:monospace;width:90%;"/><br>
+        <input type="password" id="password" placeholder="  Enter the Password" style="border-top: none;font-align:centre;border-right: none;border-left: none;margin:1rem 0; height:2rem;font-size: 1.2rem;border-bottom: .2rem solid rgba(222, 214, 223, 0.3);text-transform: none; outline: none;font:monospace;width:90%;"/>
+        <br><span id="errorMessage" style="color:red"></span><br>
+        <input type="submit" class="button" value="Login" onclick="LoginUser()" style="float: centre;padding-top: 1px;padding-bottom: 1px;padding-left: 10px;padding-right: 10px;font-size: 1.2em;"/><br><br><br><br>
+        <b>If you don't have an account.,</b>
+        <input type="button" onClick="function1()" value="Register" style="margin-top:10px;font-weight:bold;"/>
+      </div>
+
+      <!--page2-->
+      <div class="page2_class1" id="page2_id1" style="background-image: url('https://media.istockphoto.com/id/1302561463/photo/holographic-iridescent-background-unicorn-colorful-rainbow-foil-abstract-beautiful-rainbow.jpg?b=1&s=170667a&w=0&k=20&c=BXTMLyLQNIqvm2od1KerrL5hPVHbjBf5ehhN5sxlJNE=');border:1px solid gray;border-radius: 20px;width: 250px;padding-top:10px;padding-bottom: 20px;padding-left:20px;padding-right: 20px;">
+        <h1>Register</h1>
+        <input type="text" id="usernamee" placeholder="  Enter the Name" style=";outline: none;border-top: none;border-right: none;border-left: none;font-align:centre;text-transform: none;font:monospace;font-size:1.2em ;border-bottom: .2rem solid rgba(222, 214, 223, 0.3);margin:1rem 0;height:2rem;font:monospace;width:90%;"/><br>
+        <input type="password" id="passwordd" placeholder="  Enter the Password" style=";outline: none;border-top: none;border-right: none;border-left: none;font-align:centre;text-transform: none;font:monospace;font-size:1.2em ;border-bottom: .2rem solid rgba(222, 214, 223, 0.3);margin:1rem 0;height:2rem;font:monospace;width:90%;"/><br>
+        <input type="text" id="email" placeholder="  Enter the Email" style=";outline: none;border-top: none;border-right: none;border-left: none;font-align:centre;text-transform: none;font:monospace;font-size:1.2em ;border-bottom: .2rem solid rgba(222, 214, 223, 0.3);margin:1rem 0;height:2rem;font:monospace;width:90%;"/><br><br><br>
+        <input type="submit" value="Create"  onClick="function2()" style="float: centre;padding-top: 1px;padding-bottom: 1px;padding-left: 10px;padding-right: 10px;font-size: 1.2em;"/><br><br>
+      </div>
+
+      <!--page3-->
+      <div class="page3_class1" id="page3_id1" style="background-image: url('https://media.istockphoto.com/id/1302561463/photo/holographic-iridescent-background-unicorn-colorful-rainbow-foil-abstract-beautiful-rainbow.jpg?b=1&s=170667a&w=0&k=20&c=BXTMLyLQNIqvm2od1KerrL5hPVHbjBf5ehhN5sxlJNE=');border:1px solid gray;border-radius: 20px;width: 250px;padding-top:10px;padding-bottom: 20px;padding-left:20px;padding-right: 20px;">
+        <center><h2>Thank you for registered !!<br><br></h2></center>
+        <input type="submit" onClick="function3()" value="Login" style="float: centre;padding-top: 1px;padding-bottom: 1px;padding-left: 10px;padding-right: 10px;font-size: 1.2em;"><br><br>
+      </div>
+    </center>
+  </body>
+</html>
